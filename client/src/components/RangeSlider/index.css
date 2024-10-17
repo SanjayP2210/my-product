@@ -1,0 +1,13 @@
+.noUi-handle:before,
+.noUi-handle:after{
+    content:"" !important;
+    display: none !important;
+    /* cursor: pointer; */
+}
+
+.noUi-horizontal .noUi-handle {
+    width: 34px;
+    height: 28px;
+    right: -10px !important;
+    top: -6px;
+}

@@ -1,0 +1,12 @@
+.relative-product-images{
+    max-height: 250px;
+
+    .hover-img{
+        max-height: 258px;
+        display: flex !important;
+        justify-content: center;
+    }
+
+
+}
+

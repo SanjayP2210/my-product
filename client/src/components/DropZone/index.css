@@ -1,0 +1,41 @@
+.file-remove-icon {
+    position: absolute;
+    background: #ffffff61;
+    color: black;
+    top: -11px;
+    right: -8px;
+    font-weight: 500;
+    font-size: 20px;
+    border-radius: 10px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.single-file-upload{
+    width:auto !important;
+}
+
+.view-box {
+    scroll-behavior: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.view-box img {
+    display: inline-block;
+    margin-right: 10px;
+    height: 80px;
+    max-width: 150px
+}
+
+.file-image-view {
+    max-width: 100px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    transition: 0.2s;
+    opacity: 1;
+    border: 2px solid #ddd;
+    padding: 12px;
+    background: #f1f8f91c;
+}

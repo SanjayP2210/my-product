@@ -1,0 +1,28 @@
+.shop-color-list {
+    list-style: none;
+}
+
+.shop-colors-item {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--bs-muted);
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+}
+
+.shop-part .shop-filters {
+    width: 250px
+}
+
+.shop-part .shop-filters .by-colors .shop-color-list .shop-colors-item {
+    width: 24px;
+    height: 24px
+}
+
+.tick-mark {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+

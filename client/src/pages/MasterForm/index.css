@@ -1,0 +1,8 @@
+.common-form{
+    .nav-link:focus{
+        color: white !important;
+    }
+    .nav-link:hover {
+        color: white !important;
+    }
+}

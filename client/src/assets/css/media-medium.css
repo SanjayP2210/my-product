@@ -1,0 +1,76 @@
+@media (max-width:1299.98px) {
+    html[data-layout=horizontal] .body-wrapper {
+        margin-top: 80px
+    }
+
+    html[data-layout=horizontal].show-sidebar .left-sidebar {
+        left: 0
+    }
+
+    html[data-layout=horizontal] .side-mini-panel {
+        z-index: 999
+    }
+
+    html[data-layout=horizontal] .left-sidebar .sidebar-nav .sidebar-item .collapse .sidebar-item .sidebar-link .ti {
+        font-size: 16px
+    }
+
+    html[data-layout=horizontal] .app-header .navbar .navbar-collapse {
+        padding: 0
+    }
+
+    html[data-layout=horizontal] .link-sidebar .left-sidebar,
+    html[data-layout=horizontal] .link-sidebar[data-sidebartype=mini-sidebar] .left-sidebar,
+    html[data-layout=vertical] .link-sidebar .left-sidebar,
+    html[data-layout=vertical] .link-sidebar[data-sidebartype=mini-sidebar] .left-sidebar {
+        left: -260px;
+        background-color: var(--bs-body-bg)
+    }
+
+    html[data-layout=horizontal] .link-sidebar .left-sidebar {
+        width: 260px;
+        box-shadow: 7px 7px 10px rgba(0, 0, 0, .03);
+        flex-shrink: 0;
+        background-color: var(--bs-body-bg);
+        z-index: 99;
+        transition: .2s ease-in;
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 100%
+    }
+
+    html[data-layout=horizontal] .link-sidebar .scroll-sidebar {
+        padding: 0 16px;
+        overflow-x: auto;
+        height: calc(100vh - 75px)
+    }
+
+    html[data-layout=horizontal] .link-sidebar .nav-small-cap .mini-icon {
+        display: none
+    }
+
+    html[dir=rtl] .close-btn {
+        left: -241px;
+        right: unset
+    }
+
+    html[dir=rtl] .mini-sidebar .side-mini-panel,
+    html[dir=rtl] .side-mini-panel {
+        right: -330px;
+        left: unset
+    }
+
+    html[dir=rtl] .mini-sidebar.show-sidebar .side-mini-panel,
+    html[dir=rtl] .show-sidebar .side-mini-panel,
+    html[dir=rtl][data-layout=vertical] #main-wrapper.show-sidebar .left-sidebar {
+        right: 0;
+        left: unset
+    }
+
+    html[dir=rtl][data-layout=vertical] .link-sidebar[data-sidebartype=full] .left-sidebar,
+    html[dir=rtl][data-layout=vertical] .link-sidebar[data-sidebartype=mini-sidebar] .left-sidebar {
+        right: -240px;
+        left: unset
+    }
+}

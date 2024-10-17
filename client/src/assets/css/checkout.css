@@ -1,0 +1,69 @@
+.checkout .wizard-content .tab-wizard .steps ul li.done .step {
+    background-color: var(--bs-primary) !important
+}
+
+.checkout .wizard-content .tab-wizard .steps ul li.current .step {
+    background-color: var(--bs-primary) !important
+}
+
+.checkout .wizard-content .tab-wizard .steps ul li.current a {
+    color: var(--bs-muted)
+}
+
+.checkout .wizard-content .tab-wizard .steps ul li::after,
+.checkout .wizard-content .tab-wizard .steps ul li::before {
+    height: 1px;
+    width: 44%
+}
+
+.checkout .wizard-content .tab-wizard .steps ul li a {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+    padding-top: 36px;
+    font-size: 12px
+}
+
+.checkout .wizard-content .tab-wizard .steps ul li a .step {
+    margin-left: -14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 0;
+    font-size: 13px;
+    color: #fff;
+    background-color: rgba(41, 52, 61, .6)
+}
+
+.checkout .wizard-content .tab-wizard .actions ul li a:hover {
+    background-color: var(--bs-primary);
+    color: #fff
+}
+
+.checkout .payment-method .btn-group-active .btn-group input:checked+label {
+    background-color: var(--bs-primary-bg-subtle);
+    border-color: var(--bs-primary);
+    box-shadow: inherit
+}
+
+.checkout .payment-method .btn-group-active .btn-group label {
+    border-color: var(--bs-border-color)
+}
+
+/* .checkout .payment-method-list {
+    display: none
+} */
+
+@media (max-width: 768px) {
+    .checkout .wizard-content .tab-wizard .steps ul li {
+        display: table-cell;
+        width: auto;
+        float: none
+    }
+
+    .checkout .wizard-content .tab-wizard .steps ul li:first-child::before,
+    .checkout .wizard-content .tab-wizard .steps ul li:last-child::after {
+        display: none
+    }
+}

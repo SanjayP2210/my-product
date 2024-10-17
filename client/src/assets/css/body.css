@@ -1,0 +1,495 @@
+body .datepicker table tr td.active,
+body .datepicker table tr td.active.disabled,
+body .datepicker table tr td.active.disabled:hover,
+body .datepicker table tr td.active:hover,
+body .datepicker table tr td.selected,
+body .datepicker table tr td.selected.disabled,
+body .datepicker table tr td.selected.disabled:hover,
+body .datepicker table tr td.selected:hover,
+body .datepicker table tr td.today,
+body .datepicker table tr td.today.disabled,
+body .datepicker table tr td.today.disabled:hover,
+body .datepicker table tr td.today:hover {
+    background-color: var(--bs-primary) !important;
+    background-image: unset;
+    color: #fff
+}
+
+body .datepicker table tr td.day.focused,
+body .datepicker table tr td.day:hover,
+body .datepicker table tr td.range,
+body .datepicker table tr td.range.disabled,
+body .datepicker table tr td.range.disabled:hover,
+body .datepicker table tr td.range:hover,
+body .noUi-background {
+    background: var(--bs-gray-100)
+}
+
+body .daterangepicker {
+    font-family: Manrope, sans-serif;
+    border: 1px solid var(--bs-border-color)
+}
+
+.shop-part .shop-filters .by-colors .shop-color-list .shop-colors-item.shop-colors-1,
+body .daterangepicker td.active,
+body .daterangepicker td.active:hover {
+    background-color: var(--bs-primary)
+}
+
+body .daterangepicker .drp-buttons {
+    border-top: 1px solid var(--bs-border-color)
+}
+
+body .daterangepicker .drp-buttons .btn {
+    margin-left: 12px;
+    font-weight: 400;
+    border-radius: var(--bs-border-radius-sm)
+}
+
+body .daterangepicker .calendar-table .next span,
+body .daterangepicker .calendar-table .prev span {
+    border: solid var(--bs-body-color);
+    border-width: 0 2px 2px 0
+}
+
+body .dtp>.dtp-content {
+    max-height: 530px
+}
+
+body .dtp .dtp-actual-meridien a.selected,
+body .dtp div.dtp-date,
+body .dtp div.dtp-time,
+body .dtp table.dtp-picker-days tr>td>a.selected,
+body .dtp>.dtp-content>.dtp-date-view>header.dtp-header {
+    background: var(--bs-primary) !important
+}
+
+body .dtp .p10>a {
+    color: var(--bs-white) !important
+}
+
+body .dtp a.dtp-meridien-am,
+body .dtp a.dtp-meridien-pm {
+    color: var(--bs-body-color) !important;
+    background: var(--bs-body-bg) !important
+}
+
+body .ql-container.ql-snow,
+body .ql-toolbar.ql-snow {
+    border: 1px solid var(--bs-border-color)
+}
+
+body .ql-container.ql-snow {
+    border-radius: 0 0 var(--bs-border-radius-sm) var(--bs-border-radius-sm)
+}
+
+body .ql-toolbar.ql-snow {
+    border-radius: var(--bs-border-radius-sm) var(--bs-border-radius-sm) 0 0
+}
+
+body .apexcharts-tooltip {
+    border-radius: 16px
+}
+
+body .apexcharts-tooltip-marker {
+    border-radius: 4px;
+    width: 12px;
+    height: 4px
+}
+
+body .apexcharts-tooltip.apexcharts-theme-dark {
+    background: rgba(17, 28, 45, .8)
+}
+
+body .apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {
+    border-bottom: 0;
+    background: rgba(17, 28, 45, .7)
+}
+
+body .apexcharts-tooltip-series-group {
+    padding: 0 14px
+}
+
+body .apexcharts-tooltip-title {
+    padding: 10px 14px
+}
+
+body .circle-filled .noUi-handle {
+    background: var(--bs-primary);
+    border-radius: 50%;
+    cursor: pointer
+}
+
+body .noUi-handle {
+    box-shadow: none;
+    border-radius: 50%;
+    background: #fff;
+    border: 5px solid var(--bs-primary)
+}
+
+body .noUi-target {
+    background-color: var(--bs-gray-100);
+    border: none;
+    box-shadow: none;
+    border-radius: 1rem;
+    cursor: pointer
+}
+
+body .noUi-horizontal {
+    height: 10px;
+}
+
+body .noUi-horizontal .noUi-handle {
+    width: 20px;
+    height: 20px;
+    top: -5px;
+}
+
+/*body .noUi-horizontal .noUi-origin {
+    left: 17px;
+    right: -17px
+} */
+
+body .noUi-horizontal.slider-xl {
+    height: 14px
+}
+
+body .noUi-horizontal.slider-xl .noUi-handle {
+    width: 28px;
+    height: 28px;
+    top: -7px
+}
+
+body .noUi-horizontal.slider-lg {
+    height: 12px
+}
+
+body .noUi-horizontal.slider-lg .noUi-handle {
+    width: 24px;
+    height: 24px;
+    top: -6px
+}
+
+body .noUi-horizontal.slider-sm {
+    height: 6px
+}
+
+body .noUi-horizontal.slider-sm .noUi-handle {
+    top: -7px
+}
+
+body .noUi-horizontal.slider-xs {
+    height: 3px
+}
+
+body .noUi-horizontal.slider-xs .noUi-handle {
+    top: -8px
+}
+
+body .noUi-vertical.square .noUi-handle,
+body .square .noUi-handle {
+    background: var(--bs-primary);
+    border-radius: 3px
+}
+
+body .noUi-vertical.square .noUi-handle:before {
+    content: "" !important;
+    display: block;
+    width: 12px;
+    height: 2px;
+    left: -1px;
+    top: 2px
+}
+
+body .noUi-vertical.square .noUi-handle:after {
+    content: "" !important;
+    display: block;
+    width: 12px;
+    height: 2px;
+    left: -1px;
+    top: 7px
+}
+
+body .square .noUi-handle:before {
+    display: block;
+    width: 2px;
+    height: 10px;
+    left: 2px;
+    top: 0
+}
+
+body .square .noUi-handle:after {
+    display: block;
+    width: 2px;
+    height: 10px;
+    left: 7px;
+    top: 0
+}
+
+body .square.slider-xl .noUi-handle:before {
+    left: 5px;
+    top: 4px
+}
+
+body .square.slider-xl .noUi-handle:after {
+    left: 10px;
+    top: 4px
+}
+
+body .square.slider-lg .noUi-handle:before {
+    left: 3px;
+    top: 2px
+}
+
+body .square.slider-lg .noUi-handle:after {
+    left: 8px;
+    top: 2px
+}
+
+body .noUi-connect {
+    background: var(--bs-primary);
+    box-shadow: none
+}
+
+body .connect-sorting,
+body .connect-sorting-todo {
+    background: var(--bs-gray-200)
+}
+
+body .noUi-vertical {
+    display: inline-block;
+    width: 8px;
+    height: 150px
+}
+
+body .noUi-vertical .noUi-handle {
+    width: 20px;
+    height: 20px;
+    top: -5px;
+    left: -6px
+}
+
+body .select2-container .select2-search--inline .select2-search__field {
+    font-family: inherit;
+    height: 24px
+}
+
+body .select2-container--classic .select2-search--dropdown .select2-search__field,
+body .select2-container--default .select2-search--dropdown .select2-search__field,
+body .select2-container--default.select2-container--focus .select2-selection--multiple,
+body .select2-dropdown {
+    border: 1px solid var(--bs-border-color)
+}
+
+body .select2-container--classic .select2-selection--single,
+body .select2-container--classic .select2-selection--single .select2-selection__arrow {
+    background-color: var(--bs-white);
+    background-image: unset !important
+}
+
+body .select2-container--classic .select2-selection--single .select2-selection__arrow {
+    border: 0
+}
+
+body .select2-container--classic .select2-selection--single .select2-selection__arrow,
+body .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: -2px;
+    right: 20px;
+    width: auto
+}
+
+body .select2-container .select2-search--inline .select2-search__field::-moz-placeholder {
+    color: var(--bs-body-color)
+}
+
+body .select2-container .select2-search--inline .select2-search__field::placeholder {
+    color: var(--bs-body-color)
+}
+
+body .select2-container .flag-icon {
+    margin-right: 6px
+}
+
+body .select2-results__option {
+    padding: 8px 10px
+}
+
+body .select2-container--default.select2-container--disabled .select2-selection--multiple {
+    background-color: var(--bs-light)
+}
+
+body .select2-container--classic .select2-selection--single,
+body .select2-container--classic .select2-selection--single .select2-selection__arrow,
+body .select2-container--classic .select2-selection--single .select2-selection__rendered,
+body .select2-container--default .select2-selection--multiple,
+body .select2-container--default .select2-selection--single,
+body .select2-container--default .select2-selection--single .select2-selection__arrow,
+body .select2-container--default .select2-selection--single .select2-selection__rendered {
+    border-color: var(--bs-border-color);
+    color: var(--bs-body-color);
+    height: 40px;
+    line-height: 40px
+}
+
+body .select2-container--default .select2-selection--multiple {
+    line-height: 27px;
+    height: auto
+}
+
+body .select2-container--classic .select2-selection--multiple .select2-selection__choice,
+body .select2-container--default .select2-selection--multiple .select2-selection__choice,
+body .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #fff
+}
+
+body .select2-container {
+    display: inline
+}
+
+body .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    border-radius: var(--bs-border-radius-sm)
+}
+
+body div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+    background-color: var(--bs-primary) !important;
+    border-radius: var(--bs-border-radius-sm)
+}
+
+body div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm:focus {
+    box-shadow: unset
+}
+
+body div:where(.swal2-container) button:where(.swal2-styled).swal2-cancel {
+    background-color: #ff6692 !important;
+    border-radius: var(--bs-border-radius-sm)
+}
+
+body div:where(.swal2-container) .h2:where(.swal2-title),
+body div:where(.swal2-container) h2:where(.swal2-title) {
+    color: var(--bs-heading-color)
+}
+
+body div:where(.swal2-icon).swal2-success .swal2-success-ring {
+    border: .25em solid rgba(54, 199, 108, .3)
+}
+
+body div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
+    background-color: var(--bs-success)
+}
+
+body :not(pre)>code[class*=language-],
+body pre[class*=language-] {
+    background: #1f2a3d
+}
+
+body .task-list-section {
+    display: flex;
+    gap: 24px;
+    flex-wrap: nowrap
+}
+
+body .task-list-container {
+    width: 265px;
+    flex-shrink: 0
+}
+
+body .connect-sorting {
+    padding: 20px;
+    border-radius: var(--bs-border-radius)
+}
+
+body .connect-sorting .task-container-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 3px 18px
+}
+
+body .connect-sorting .add-s-task .addTask,
+body .connect-sorting .task-container-header .dropdown .dropdown-toggle {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--bs-box-shadow);
+    border-radius: 100%;
+    background-color: var(--bs-body-bg);
+    font-weight: var(--font-weight-bolder)
+}
+
+body .scrumboard .task-header {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 11px 13px
+}
+
+body .scrumboard .task-header .h4,
+body .scrumboard .task-header h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0
+}
+
+body .scrumboard .task-content {
+    padding: 11px 13px
+}
+
+body .scrumboard .card {
+    background: var(--bs-body-bg);
+    border: none;
+    border-radius: var(--bs-border-radius);
+    margin-bottom: 15px
+}
+
+body .scrumboard .card .card-body .task-body .task-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px
+}
+
+body .scrumboard .card .card-body .task-body .task-bottom div.tb-section-1 span:hover {
+    color: var(--bs-primary);
+    cursor: pointer
+}
+
+body .scrumboard .card.img-task .card-body .task-content img {
+    height: 106px;
+    width: 100%
+}
+
+body .scrumboard .card.simple-title-task .card-body .task-header {
+    margin-bottom: 0;
+    padding: 11px 13px
+}
+
+body .scrumboard .card.simple-title-task .card-body .task-header div:first-child {
+    width: 70%
+}
+
+body .scrumboard .card.simple-title-task .card-body .task-header div:nth-child(2) {
+    width: 30%;
+    text-align: right
+}
+
+body .scrumboard .card.simple-title-task .card-body .task-body .task-bottom {
+    padding: 3px 15px 11px
+}
+
+body .ui-state-highlight {
+    position: relative;
+    border-color: var(--bs-primary);
+    height: 141px;
+    margin-bottom: 36px;
+    border-radius: 15px;
+    border: 2px dashed var(--bs-primary);
+    background-color: var(--bs-body-bg);
+    box-shadow: var(--card-box-shadow);
+    background-image: linear-gradient(45deg, rgba(93, 135, 255, .09) 25%, transparent 25%, transparent 50%, rgba(93, 135, 255, .09) 50%, rgba(93, 135, 255, .09) 75%, transparent 75%, transparent);
+    background-size: 1rem 1rem;
+    animation: 1s linear infinite progress-bar-stripes
+}
