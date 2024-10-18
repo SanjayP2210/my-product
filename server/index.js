@@ -31,7 +31,7 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
     dotenv.config({ path: "server/config/config.env" });
 }
 
-app.use(express.static(path.join(__dirname, "../Client/dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 // app.use('/', express.static(path.join(__dirname, 'public/images')));
 app.use(cookieParser());
 cloudinary.config({
