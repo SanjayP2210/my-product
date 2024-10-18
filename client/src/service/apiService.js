@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
 import { LogoutUser, getJWTToken } from "../constants/utilities";
 
-export let BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
-console.log('VITE_API_URL', import.meta.env.VITE_API_URL)
+export let BASE_URL = import.meta.env.VITE_APP_API_URL || 'http://localhost:3001/api';
+console.log('VITE_API_URL', import.meta.env.VITE_APP_API_URL)
 console.log('import.meta.env', import.meta.env)
 const middleware = async (response) => {
     if (response.ok && [200, 201].includes(response.status)) {
