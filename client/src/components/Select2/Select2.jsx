@@ -34,6 +34,7 @@ const Select2 = ({
 
   const customStyles = useMemo(() => {
     const themeColor = getThemeColor() === "light" ? "black" : "white";
+    console.log('themeColor',themeColor)
     return {
       control: (base) => ({
         ...base,

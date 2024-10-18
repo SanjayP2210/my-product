@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "start": "vite --open",
-    "build": "vite build",
+    "build": "vite build --mode production",
     "lint": "eslint .",
+    "dev": "vite --mode development",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -37,6 +38,7 @@
     "react-stars": "^2.2.5",
     "react-toastify": "^10.0.5",
     "react-use-wizard": "^2.3.0",
+    "serve": "^14.2.4",
     "slick-carousel": "^1.8.1",
     "uuid": "^10.0.0"
   },

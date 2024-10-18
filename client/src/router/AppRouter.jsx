@@ -31,9 +31,6 @@ const ProductDetails = lazy(() =>
 const AddProduct = lazy(() =>
   import("../pages/Ecommerce/Master/AddProduct.jsx")
 );
-const EditProduct = lazy(() =>
-  import("../pages/Ecommerce/Master/EditProduct.jsx")
-);
 const CheckoutProduct = lazy(() =>
   import("../pages/Ecommerce/Checkout/CheckoutProduct.jsx")
 );
@@ -72,7 +69,6 @@ const {
                 path="order-detail/:orderId"
                 element={<OrderDetails />}
               />
-              <Route path="edit-product-old/:id" element={<EditProduct />} />
               <Route path="checkout-product" element={<CheckoutProduct />} />
               <Route path="/admin" element={<AdminRoute />} >
                 <Route path="shop" element={<Shop />} />

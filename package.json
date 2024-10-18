@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/index.js",
-    "dev": "nodemon server/index.js"
+    "start": "nodemon server/index.js NODE_ENV=development",
+    "dev": "node server/index.js",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
   },
   "keywords": [],
   "author": "",

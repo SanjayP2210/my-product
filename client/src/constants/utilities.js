@@ -33,7 +33,7 @@ export const LogoutUser = () => {
 
 export const getThemeColor = () => {
     const user = localStorage.getItem("loginUserData") ? JSON.parse(localStorage.getItem("loginUserData")) : {};
-    return user && user.themeColor ? user.themeColor : null;
+    return user && user.themeColor ? user.themeColor : "light";
 }
 
 export const checkPassword = (password) => {

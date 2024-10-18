@@ -19,7 +19,7 @@ import DiscountSection from "./DiscountSection.jsx";
 import ColorSelector from "../Shop/ColorSelector.jsx";
 import ColorSections from "../ProductDetails/ColorSections.jsx";
 // import ColorSelector from "../../../components/ColorSelector/ColorSelector.jsx";
-
+import $ from 'jquery'; // Importing jQuery
 const AddProduct = () => {
   const { id } = useParams();
   const navigate = useNavigate();

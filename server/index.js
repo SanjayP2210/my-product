@@ -68,7 +68,7 @@ app.use('/api/payment', paymentRouter);
 app.use(errorMiddleware);
 
 app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../Client/dist/index.html"));
+    res.sendFile(path.resolve(__dirname, "../client/dist/index.html"));
 });
 
 // Handling Uncaught Exception

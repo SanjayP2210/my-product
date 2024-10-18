@@ -16,7 +16,7 @@ import DescriptionReviewSection from "./DescriptionReviewSection";
 import AddReview from "./AddReview";
 import Slick from "../../../components/OwlCarousel/Slick";
 import './index.css'
-
+import $ from 'jquery'; // Importing jQuery
 const ProductDetails = () => {
   const navigate = useNavigate();
   const [productDetail, setProductDetail] = useState({});
@@ -155,7 +155,7 @@ const ProductDetails = () => {
       const response = await apiService.getRequest(
         `review/product/${productId}`
       );
-      if (response.isError) {
+      if (response?.isError) {
         toast.error("Error fetching review", response.message);
       } else {
         setReviewForm({
@@ -165,11 +165,9 @@ const ProductDetails = () => {
         });
         const { reviews } = response;
         setReviewList(reviews);
-        // eslint-disable-next-line no-undef
-        $(window).scrollTop({ behavior: "smooth" });
       }
     } catch (error) {
-      toast.error("Error adding new review", error);
+      toast.error("Error fetching reviews", error);
     }
   };
 
@@ -192,7 +190,7 @@ const ProductDetails = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error("Error adding new review");
+      // toast.error("Error adding new review");
     }
   };
 
