@@ -47,30 +47,38 @@ const OrderDetails = () => {
       status: status?.value,
       orderId,
     };
-    if (paymentStatus.value === "succeeded") {
+    // if(!paymentStatus || !status){
+    //   toast.error("status and payment status both are required");
+    //   return;
+    // }
+    if (paymentStatus?.value === "succeeded") {
       formObj.status = "Shipped";
       formObj.payment_status = "succeeded";
     }
-    if (status.value === "Cancelled") {
+    if (status?.value === "Cancelled") {
       formObj.payment_status = "refuned";
     }
     dispatch(updateOrder(formObj));
   };
 
   const getUpdatePaymentElement = () => {
-    // if (["Cancelled", "Delivered", "Processing"].includes(order?.orderStatus)) {
-    //   return <></>;
-    // }
+    if (["Cancelled", "Delivered", "Processing"].includes(order?.orderStatus)) {
+      return <></>;
+    }
     let optionList = [
       {
         label: "Paid",
         value: "succeeded",
-      },
-      {
-        label: "Refund",
-        value: "refunded",
-      },
+      }
     ];
+    if(order?.paymentInfo?.status === 'succeeded'){
+      optionList = [
+        {
+          label: "Refund",
+          value: "refunded",
+        },
+      ];
+    }
 
     optionList = optionList.filter(
       (options) => options.value !== order?.paymentInfo?.status
@@ -92,12 +100,17 @@ const OrderDetails = () => {
   const getUpdateProcessElement = () => {
     let titleValue = "Process Order";
     let optionList = [];
-    // if (["Cancelled", "Delivered"].includes(order?.orderStatus)) {
-    //   return <></>;
-    // } else if (
-    //   order?.orderStatus === "Shipped" &&
-    //   order?.paymentInfo?.status === "succeeded"
-    // ) {
+    if (["Cancelled", "Delivered"].includes(order?.orderStatus)) {
+      return <></>;
+    } else if (
+      order?.orderStatus === "Shipped" &&
+      order?.paymentInfo?.status != "succeeded"
+    ) {
+      return <></>;
+    } else if (
+      order?.orderStatus === "Shipped" &&
+      order?.paymentInfo?.status === "succeeded"
+    ) {
       optionList = [
         {
           label: "Delivered",
@@ -108,14 +121,14 @@ const OrderDetails = () => {
           value: "Cancelled",
         },
       ];
-    // } else if (order?.orderStatus === "Processing") {
-    //   optionList = [
-    //     {
-    //       label: "Shipped",
-    //       value: "Shipped",
-    //     },
-    //   ];
-    // }
+    } else if (order?.orderStatus === "Processing") {
+      optionList = [
+        {
+          label: "Shipped",
+          value: "Shipped",
+        },
+      ];
+    }
     return (
       <UpdateProcessDropDown
         titleValue={titleValue}
@@ -126,46 +139,48 @@ const OrderDetails = () => {
     );
   };
 
-  const OrderInfoSection = (order) =>{
-    return <>
-     <h5>Order Info</h5>
-                        <div className="orderDetailsContainerBox">
-                          <div>
-                            <p>
-                              <strong>
-                                Order Status:
-                                <span
-                                  className={`badge fs-2 fw-semibold ${
-                                    order?.orderStatus === "Delivered"
-                                      ? "text-bg-success"
-                                      : "text-bg-danger"
-                                  }`}
-                                  style={{ marginLeft: "20px" }}
-                                >
-                                  {order?.orderStatus}
-                                </span>
-                              </strong>
-                            </p>
-                          </div>
-                          {order?.shippedAt && (
-                            <div>
-                              <p>
-                                <strong>Shipped Date:</strong>{" "}
-                              </p>
-                               <p> &nbsp;&nbsp;{formatDate(order?.shippedAt)}</p>
-                            </div>
-                          )}
-                          {order?.deliveredAt && (
-                            <div>
-                              <p>
-                                <strong>Delivered Date:</strong>{" "}
-                              </p>
-                               <p>&nbsp;&nbsp;{formatDate(order?.deliveredAt)}</p>
-                            </div>
-                          )}
-                        </div>
-    </>
-  }
+  const OrderInfoSection = (order) => {
+    return (
+      <>
+        <h5>Order Info</h5>
+        <div className="orderDetailsContainerBox">
+          <div>
+            <p>
+              <strong>
+                Order Status:
+                <span
+                  className={`badge fs-2 fw-semibold ${
+                    order?.orderStatus === "Delivered"
+                      ? "text-bg-success"
+                      : "text-bg-danger"
+                  }`}
+                  style={{ marginLeft: "20px" }}
+                >
+                  {order?.orderStatus}
+                </span>
+              </strong>
+            </p>
+          </div>
+          {order?.shippedAt && (
+            <div>
+              <p>
+                <strong>Shipped Date:</strong>{" "}
+              </p>
+              <p> &nbsp;&nbsp;{formatDate(order?.shippedAt)}</p>
+            </div>
+          )}
+          {order?.deliveredAt && (
+            <div>
+              <p>
+                <strong>Delivered Date:</strong>{" "}
+              </p>
+              <p>&nbsp;&nbsp;{formatDate(order?.deliveredAt)}</p>
+            </div>
+          )}
+        </div>
+      </>
+    );
+  };
 
   return (
     <>
@@ -248,16 +263,19 @@ const OrderDetails = () => {
                                 <strong>Payment Date:</strong>
                                 {"  "}
                               </p>
-                                <p> &nbsp;&nbsp;{formatDate(order?.paidAt)}</p>
+                              <p> &nbsp;&nbsp;{formatDate(order?.paidAt)}</p>
                             </div>
                           )}
                           <div>
                             <p>
                               <strong>Payment Method :</strong>
                             </p>
-                             <p>&nbsp;&nbsp; {order?.paymentInfo?.typeOfPayment === "stripe"
+                            <p>
+                              &nbsp;&nbsp;{" "}
+                              {order?.paymentInfo?.typeOfPayment === "stripe"
                                 ? "Online"
-                                : "Cash On Delivery"}</p>
+                                : "Cash On Delivery"}
+                            </p>
                           </div>
                           <div>
                             <p>
@@ -276,31 +294,31 @@ const OrderDetails = () => {
                             </p>
                           </div>
                         </div>
-                       {isEditFlow && OrderInfoSection(order)}
+                        {isEditFlow && OrderInfoSection(order)}
                       </div>
                     </div>
                   </div>
-                 {!isEditFlow && 
-                 <div className="col-md-4">
-                    <div className="card shadow-none border">
-                      <div className="card-body p-4 address-card">
-                      {OrderInfoSection(order)}
+                  {!isEditFlow && (
+                    <div className="col-md-4">
+                      <div className="card shadow-none border">
+                        <div className="card-body p-4 address-card">
+                          {OrderInfoSection(order)}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  }
+                  )}
                   {isEditFlow && (
                     <div className="col-md-4">
                       <div className="card shadow-none border">
                         <div className="card-body p-4 address-card">
                           {getUpdatePaymentElement()}
                           {getUpdateProcessElement()}
-                          <br />
+                          {/* <br /> */}
                           <button
-                            className="btn btn-primary w-100"
+                            className="btn btn-primary w-100 mt-2"
                             type="submit"
                             onClick={handleUpdateOrder}
-                            // disabled={disabled}
+                            disabled={!(status || paymentStatus)}
                           >
                             Process
                           </button>
@@ -319,14 +337,17 @@ const OrderDetails = () => {
                           order?.orderItems.map((item) => (
                             <div key={item.product?._id} className="cart-items">
                               <div className="center-item">
-                              <img
-                              width={56} height={56}
-                                src={item?.product?.thumbnail[0]?.url}
-                                alt="Product"
-                              />
-                              <Link to={`/product-detail/${item.product?._id}`}>
-                                <h6>{item.name}</h6>
-                              </Link>{" "}
+                                <img
+                                  width={56}
+                                  height={56}
+                                  src={item?.product?.thumbnail[0]?.url}
+                                  alt="Product"
+                                />
+                                <Link
+                                  to={`/product-detail/${item.product?._id}`}
+                                >
+                                  <h6>{item.name}</h6>
+                                </Link>{" "}
                               </div>
                               <h6 className="product-text fw-semibold mb-0">
                                 {item.quantity} X ₹{item.price} ={" "}

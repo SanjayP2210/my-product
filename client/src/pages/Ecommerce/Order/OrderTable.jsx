@@ -15,6 +15,12 @@ const OrderTable = ({
   totalPages,
   totalCount,
 }) => {
+  const getBadgeClass = (orderStatus) =>{
+   return orderStatus === 'Processing'? 'dark' :
+          orderStatus === 'Shipped' ? 'warning' : 
+          orderStatus === 'Delivered' ? 'success' : 
+          orderStatus === 'Cancelled' ? 'danger' : "light";
+  }
   const {
     isAdmin,
   } = useSelector((state) => state.auth);
@@ -72,11 +78,8 @@ const OrderTable = ({
                     </td>
                     <td>
                       <span
-                        className={`badge fs-2 fw-semibold ${
-                          order?.orderStatus &&
-                          order?.orderStatus === "Delivered"
-                            ? "text-bg-success"
-                            : "text-bg-danger"
+                        className={`badge fs-2 fw-semibold text-bg-${
+                          getBadgeClass(order?.orderStatus)
                         }`}
                       >
                         {order?.orderStatus}
