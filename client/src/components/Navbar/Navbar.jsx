@@ -18,6 +18,8 @@ import {
 import defaultProfileImage from "../../assets/images/profile/user-1.jpg";
 import "./Navbar.css";
 import { menuList, optionMenuList } from "./menu-list";
+import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually.
+import 'simplebar/dist/simplebar.css';
 
 const Navbar = () => {
   const {
@@ -904,7 +906,7 @@ const Navbar = () => {
           ></button>
         </div>
         <div className="offcanvas-body overflow-hidden">
-          <div className="container mt-1 scroll-bar nav-cart-section">
+          <div className={`container mt-1 scroll-bar ${cartItems?.length ? 'nav-cart-section' : ''}`} >
             {cartItems?.length > 0 ? (
               cartItems?.map((product, index) => {
                 return (

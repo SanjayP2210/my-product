@@ -6,6 +6,11 @@ export const getAllOrders = createAsyncThunk('order/getAllOrders', async (params
   return await apiService.getRequest(params ? `order/admin-order?${params.toString()}` : 'order/admin-order');
 });
 
+// get all Orders -- Admin
+export const getMonthlyReport = createAsyncThunk('order/getMonthlyReport', async (params) => {
+  return await apiService.getRequest('order/admin-order-report');
+});
+
 // get all payments -- Admin
 export const getAllPayments = createAsyncThunk('order/getAllPayments', async (params) => {
   return await apiService.getRequest(params ? `order/admin-order/get-all-payments?${params.toString()}` : 'order/admin-order/get-all-payments');
@@ -42,7 +47,8 @@ const initialState = {
   isLoading: false,
   isOrderUpdated: false,
   payments: [],
-  generatedOrderId: null
+  generatedOrderId: null,
+  chartData:{}
 };
 
 const orderSlice = createSlice({
@@ -71,6 +77,13 @@ const orderSlice = createSlice({
         state.orders = action?.payload?.orders;
         state.generatedOrderId = null;
         console.log('orders:', state.orders);
+        state.isLoading = false;
+
+      })
+      .addCase(getMonthlyReport.fulfilled, (state, action) => {
+        if (action.payload.isError) return;
+        state.chartData = action?.payload?.chartData;
+        console.log('chartData:', state.chartData);
         state.isLoading = false;
 
       })

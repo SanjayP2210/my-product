@@ -7,7 +7,8 @@ import {
   updateOrder,
   deleteOrder,
   newOrder,
-  getAllPayments
+  getAllPayments,
+  getMonthlyReport
 } from "../controller/orderController.js";
 import { adminMiddleware } from "../middleware/admin-middleware.js";
 
@@ -20,6 +21,9 @@ router.route("/my-orders").get(authMiddleWare,myOrders);
 router
   .route("/admin-order/")
   .get(authMiddleWare, getAllOrders);
+router
+  .route("/admin-order-report")
+  .get(authMiddleWare, getMonthlyReport);
 router
   .route("/admin-order/get-all-payments/")
   .get(authMiddleWare, getAllPayments);

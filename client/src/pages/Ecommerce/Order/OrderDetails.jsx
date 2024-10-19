@@ -58,9 +58,9 @@ const OrderDetails = () => {
   };
 
   const getUpdatePaymentElement = () => {
-    if (["Cancelled", "Delivered", "Processing"].includes(order?.orderStatus)) {
-      return <></>;
-    }
+    // if (["Cancelled", "Delivered", "Processing"].includes(order?.orderStatus)) {
+    //   return <></>;
+    // }
     let optionList = [
       {
         label: "Paid",
@@ -92,12 +92,12 @@ const OrderDetails = () => {
   const getUpdateProcessElement = () => {
     let titleValue = "Process Order";
     let optionList = [];
-    if (["Cancelled", "Delivered"].includes(order?.orderStatus)) {
-      return <></>;
-    } else if (
-      order?.orderStatus === "Shipped" &&
-      order?.paymentInfo?.status === "succeeded"
-    ) {
+    // if (["Cancelled", "Delivered"].includes(order?.orderStatus)) {
+    //   return <></>;
+    // } else if (
+    //   order?.orderStatus === "Shipped" &&
+    //   order?.paymentInfo?.status === "succeeded"
+    // ) {
       optionList = [
         {
           label: "Delivered",
@@ -108,14 +108,14 @@ const OrderDetails = () => {
           value: "Cancelled",
         },
       ];
-    } else if (order?.orderStatus === "Processing") {
-      optionList = [
-        {
-          label: "Shipped",
-          value: "Shipped",
-        },
-      ];
-    }
+    // } else if (order?.orderStatus === "Processing") {
+    //   optionList = [
+    //     {
+    //       label: "Shipped",
+    //       value: "Shipped",
+    //     },
+    //   ];
+    // }
     return (
       <UpdateProcessDropDown
         titleValue={titleValue}
@@ -125,6 +125,47 @@ const OrderDetails = () => {
       />
     );
   };
+
+  const OrderInfoSection = (order) =>{
+    return <>
+     <h5>Order Info</h5>
+                        <div className="orderDetailsContainerBox">
+                          <div>
+                            <p>
+                              <strong>
+                                Order Status:
+                                <span
+                                  className={`badge fs-2 fw-semibold ${
+                                    order?.orderStatus === "Delivered"
+                                      ? "text-bg-success"
+                                      : "text-bg-danger"
+                                  }`}
+                                  style={{ marginLeft: "20px" }}
+                                >
+                                  {order?.orderStatus}
+                                </span>
+                              </strong>
+                            </p>
+                          </div>
+                          {order?.shippedAt && (
+                            <div>
+                              <p>
+                                <strong>Shipped Date:</strong>{" "}
+                              </p>
+                               <p> &nbsp;&nbsp;{formatDate(order?.shippedAt)}</p>
+                            </div>
+                          )}
+                          {order?.deliveredAt && (
+                            <div>
+                              <p>
+                                <strong>Delivered Date:</strong>{" "}
+                              </p>
+                               <p>&nbsp;&nbsp;{formatDate(order?.deliveredAt)}</p>
+                            </div>
+                          )}
+                        </div>
+    </>
+  }
 
   return (
     <>
@@ -137,7 +178,7 @@ const OrderDetails = () => {
               <div className="orderDetailsContainer">
                 <h3>Order ID: {order?._id}</h3>
                 <div className="row">
-                  <div className={"col-md-5"}>
+                  <div className={"col-md-4"}>
                     <div className="card shadow-none border">
                       <div className="card-body p-4 address-card">
                         <h5>Shipping Info</h5>
@@ -175,7 +216,7 @@ const OrderDetails = () => {
                       </div>
                     </div>
                   </div>
-                  <div className={`${isEditFlow ? "col-md-4" : "col-md-6"}`}>
+                  <div className={"col-md-4"}>
                     <div className="card shadow-none border">
                       <div className="card-body p-4 address-card">
                         <h5>Payment Info</h5>
@@ -206,18 +247,17 @@ const OrderDetails = () => {
                               <p>
                                 <strong>Payment Date:</strong>
                                 {"  "}
-                                {formatDate(order?.paidAt)}
                               </p>
+                                <p> &nbsp;&nbsp;{formatDate(order?.paidAt)}</p>
                             </div>
                           )}
                           <div>
                             <p>
                               <strong>Payment Method :</strong>
-                              {"  "}
-                              {order?.paymentInfo?.typeOfPayment === "stripe"
-                                ? "Online"
-                                : "Cash On Delivery"}
                             </p>
+                             <p>&nbsp;&nbsp; {order?.paymentInfo?.typeOfPayment === "stripe"
+                                ? "Online"
+                                : "Cash On Delivery"}</p>
                           </div>
                           <div>
                             <p>
@@ -236,47 +276,21 @@ const OrderDetails = () => {
                             </p>
                           </div>
                         </div>
-                        <h5>Order Info</h5>
-                        <div className="orderDetailsContainerBox">
-                          <div>
-                            <p>
-                              <strong>
-                                Order Status:
-                                <span
-                                  className={`badge fs-2 fw-semibold ${
-                                    order?.orderStatus === "Delivered"
-                                      ? "text-bg-success"
-                                      : "text-bg-danger"
-                                  }`}
-                                  style={{ marginLeft: "20px" }}
-                                >
-                                  {order?.orderStatus}
-                                </span>
-                              </strong>
-                            </p>
-                          </div>
-                          {order?.shippedAt && (
-                            <div>
-                              <p>
-                                <strong>Shipped Date:</strong>{" "}
-                                {formatDate(order?.shippedAt)}
-                              </p>
-                            </div>
-                          )}
-                          {order?.deliveredAt && (
-                            <div>
-                              <p>
-                                <strong>Delivered Date:</strong>{" "}
-                                {formatDate(order?.deliveredAt)}
-                              </p>
-                            </div>
-                          )}
-                        </div>
+                       {isEditFlow && OrderInfoSection(order)}
                       </div>
                     </div>
                   </div>
+                 {!isEditFlow && 
+                 <div className="col-md-4">
+                    <div className="card shadow-none border">
+                      <div className="card-body p-4 address-card">
+                      {OrderInfoSection(order)}
+                      </div>
+                    </div>
+                  </div>
+                  }
                   {isEditFlow && (
-                    <div className="col-md-3">
+                    <div className="col-md-4">
                       <div className="card shadow-none border">
                         <div className="card-body p-4 address-card">
                           {getUpdatePaymentElement()}
@@ -303,15 +317,18 @@ const OrderDetails = () => {
                       <div className="orderDetailsCartItemsContainer">
                         {order?.orderItems &&
                           order?.orderItems.map((item) => (
-                            <div key={item.product?._id}>
+                            <div key={item.product?._id} className="cart-items">
+                              <div className="center-item">
                               <img
+                              width={56} height={56}
                                 src={item?.product?.thumbnail[0]?.url}
                                 alt="Product"
                               />
                               <Link to={`/product-detail/${item.product?._id}`}>
                                 <h6>{item.name}</h6>
                               </Link>{" "}
-                              <h6 className="fs-4 fw-semibold mb-0">
+                              </div>
+                              <h6 className="product-text fw-semibold mb-0">
                                 {item.quantity} X ₹{item.price} ={" "}
                                 {formatToINR(item.price * item.quantity)}
                               </h6>

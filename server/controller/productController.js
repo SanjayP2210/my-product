@@ -586,6 +586,7 @@ const updateProduct = async (req, res) => {
             categories,
             gender,
             colors,
+            status : body?.stock > 0  ? 'In Stock' : 'Out Of Stock',
             modifiedAt: moment().tz('Asia/Kolkata').format(),
             modifiedBy: req?.user?._id?.toString()
         };

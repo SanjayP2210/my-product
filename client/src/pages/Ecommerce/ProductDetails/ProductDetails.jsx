@@ -235,11 +235,11 @@ const ProductDetails = () => {
                     <div className="d-flex align-items-center gap-2 mb-2">
                       {stock > 0 ? 
                         <span className="badge text-bg-success fs-2 fw-semibold">
-                          In stock 
+                          In Stock 
                           </span>
                             :
                           <span className="badge text-bg-danger fs-2 fw-semibold">
-                           Out of stock
+                           Out Of Stock
                         </span>
                       }
                       {categories && (

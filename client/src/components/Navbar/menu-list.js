@@ -20,6 +20,11 @@ export const menuList = {
             title: 'Gender',
             icon: '',
         },
+        {
+            link: 'master/category',
+            title: 'Category',
+            icon: '',
+        },
     ],
     userMenuList: [
         {

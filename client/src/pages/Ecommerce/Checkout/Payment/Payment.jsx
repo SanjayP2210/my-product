@@ -12,13 +12,13 @@ import { v4 as uuidv4 } from "uuid";
 import { getCart } from "../../../../reducers/cartReducer";
 
 const paymentOptions = [
-  {
-    id: "1",
-    value: "paypal",
-    label: "Pay with Paypal",
-    text: "You will be redirected to PayPal website to complete your purchase securely.",
-    image: paypalSvg,
-  },
+  // {
+  //   id: "1",
+  //   value: "paypal",
+  //   label: "Pay with Paypal",
+  //   text: "You will be redirected to PayPal website to complete your purchase securely.",
+  //   image: paypalSvg,
+  // },
   {
     id: "2",
     value: "cod",

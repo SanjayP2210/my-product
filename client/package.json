@@ -39,6 +39,7 @@
     "react-toastify": "^10.0.5",
     "react-use-wizard": "^2.3.0",
     "serve": "^14.2.4",
+    "simplebar": "^6.2.7",
     "slick-carousel": "^1.8.1",
     "uuid": "^10.0.0"
   },

@@ -2,7 +2,7 @@
   background-color: white;
 }
 
-.orderDetailsContainer > h3 {
+.orderDetailsContainer>h3 {
   /* margin: 4vmax 0; */
   margin-bottom: 15px;
   color: tomato;
@@ -14,82 +14,98 @@
   padding-bottom: 0%;
 }
 
-.orderDetailsContainer > p {
-}
+.orderDetailsContainer>p {}
 
 .orderDetailsContainerBox,
 .orderDetailsCartItemsContainer {
-  margin: 2vmax;
+  overflow: auto;
 }
 
-.orderDetailsContainerBox > div {
+.orderDetailsContainerBox>div {
   display: flex;
   margin: 10px 0;
 }
 
-.orderDetailsContainerBox > div > p {
-  color: black;
-}
-.orderDetailsContainerBox > div > span {
-  margin: 0 1vmax;
-  color: #575757;
+.orderDetailsContainerBox>div>p {
+  color: rgba(var(--bs-link-color-rgb), .85)
 }
 
-.orderDetailsCartItems > p {
+.orderDetailsContainerBox>div>span {
+  margin: 0 1vmax;
+  color: var(--bs-text-muted);
 }
+
+.orderDetailsCartItems>p {}
 
 .orderDetailsCartItems {
   padding: 2vmax 5vmax;
   border-top: 1px solid rgba(0, 0, 0, 0.164);
 }
 
-.orderDetailsCartItemsContainer > div {
+.orderDetailsCartItemsContainer>div {
   display: flex;
   align-items: center;
   margin: 2vmax 0;
 }
 
-.orderDetailsCartItemsContainer > div > img {
-  width: 3vmax;
+.orderDetailsCartItemsContainer img {
+  margin-right: 10px;
 }
 
-.orderDetailsCartItemsContainer > div > a {
+.orderDetailsCartItemsContainer .cart-items {
+  min-width: 800px;
+  justify-content: space-between;
+}
+
+.orderDetailsCartItemsContainer>div>a {
   color: #575757;
   margin: 0 2vmax;
   width: 60%;
   text-decoration: none;
 }
 
-.orderDetailsCartItemsContainer > div > span {
+.orderDetailsCartItemsContainer>div>span {
   color: #5e5e5e;
 }
 
 @media screen and (max-width: 600px) {
-  .orderDetailsContainerBox > div {
+
+  .orderDetailsContainerBox,
+  .orderDetailsCartItemsContainer {
+    margin: 2vmax;
+    overflow: auto;
+  }
+
+  .orderDetailsContainerBox>div {
     margin: 6vw 0;
   }
 
-  .orderDetailsCartItemsContainer > div {
+  .orderDetailsCartItemsContainer>div {
     margin: 4vw 0;
   }
 
-  .orderDetailsCartItemsContainer > div > img {
+  .orderDetailsCartItemsContainer>div>img {
     width: 10vw;
   }
 
-  .orderDetailsCartItemsContainer > div > a {
+  .orderDetailsCartItemsContainer>div>a {
     margin: 2vw;
     width: 30%;
   }
 
-  .orderDetailsCartItemsContainer > div > span {
-  }
+  .orderDetailsCartItemsContainer>div>span {}
 }
 
 
 .greenColor {
   color: green !important;
 }
+
 .redColor {
   color: red !important;
+}
+
+
+.product-text {
+  min-width: 200px;
 }

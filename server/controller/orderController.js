@@ -190,3 +190,69 @@ export const deleteOrder = async (req, res, next) => {
         success: true,
     });
 }
+
+export const getMonthlyReport= async (req,res)=> {
+    try {
+        const report = await Order.aggregate([
+            {
+                $match: {
+                    createdAt: { $gte: new Date('2024-01-01'), $lt: new Date('2025-01-01') },
+                    orderStatus: { $ne: 'Cancelled' }
+                }
+            },
+            {
+                $group: {
+                    _id: {
+                        $dateToString: { format: "%Y-%m", date: "$createdAt" }
+                    },
+                    totalSales: { $sum: "$totalPrice" }
+                }
+            },
+            {
+                $project: {
+                    monthYear: "$_id",
+                    totalSales: 1,
+                    _id: 0,
+                    toatalPrice: 1
+                }
+            },
+            {
+                $sort: { monthYear: 1 }
+            }
+        ]);
+
+        // Prepare data for ApexCharts
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug","Sep", "Oct", "Nov", "Dec"]
+
+        const monthlyIncome = new Array(12).fill(0); // Initialize array for 12 months
+        let totalIncome = 0;
+        report.forEach(item => {
+            const monthIndex = parseInt(item.monthYear.split('-')[1]) - 1; // Get month index (0-11)
+            monthlyIncome[monthIndex] = item.totalSales;
+            totalIncome += item.totalSales;
+        });
+
+        const chartData = {
+            categories: months,
+            series: [{
+                name: "2022",
+                data: [50, 60, 30, 55, 75, 60, 100, 120,60, 100, 120],
+              },
+              {
+                name: "2023",
+                data: [35, 45, 40, 50, 35, 55, 40, 45,60, 100, 120],
+              },{
+                name : "2024",
+                data: monthlyIncome
+            }],
+            totalIncome
+        };
+        res.status(200).json({
+            success: true,
+            chartData
+        });
+
+    } catch (error) {
+        console.error("Error fetching monthly report:", error);
+    }
+}

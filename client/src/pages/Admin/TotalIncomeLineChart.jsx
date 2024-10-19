@@ -2,9 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import Chart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 import ReactApexChart from "react-apexcharts";
+import { formatToINR } from "../../constants/utilities";
 
 const TotalIncomeLineChart = ({chartValues}) => {
   let chart = null;
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug","Sep", "Oct", "Nov", "Dec"];
   const chartRef  = useRef(null);
   const [chartElement, setChartElement] = useState(null)
   let chartOptions = {
@@ -83,7 +85,7 @@ const TotalIncomeLineChart = ({chartValues}) => {
       axisTicks: {
         show: false,
       },
-      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug"],
+      // categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug"],
     },
     markers: {
       strokeColor: [
@@ -95,6 +97,11 @@ const TotalIncomeLineChart = ({chartValues}) => {
     },
     tooltip: {
       theme: "dark",
+      x: {
+        formatter: (value) => {
+          return months[parseInt(value) - 1] // Format tooltip to show month names
+        }
+      }
     },
   };
   useEffect(() => {
@@ -108,18 +115,35 @@ const TotalIncomeLineChart = ({chartValues}) => {
 
   useEffect(() => {
     if (chartValues?.series?.length > 0 && chartElement) {
-
+      let highestIncome = 0;
+      chartValues.series.map((item)=>{
+        item.data.forEach(data => {
+          if (data > highestIncome) {
+            highestIncome = data;
+        }
+        });
+      })
       // Update options
     chartElement.updateOptions({
-            series: chartValues.series,
             options : {
                 ...chartOptions,
-                // labels : chartValues?.labels
             },
             legend: {
               show: true,
               position: "top", 
             },
+            xaxis: {
+              categories : chartValues?.categories
+            },
+            yaxis: {
+              // labels: {
+              //     formatter: (value) => `${formatToINR(value)}` // Format Y-axis values
+              // },
+              min: 0, // Set minimum value
+              tickAmount: 5, // Number of ticks on the Y-axis (optional)
+              max: highestIncome > 0 ? highestIncome + (highestIncome/10) : 0 
+          },
+            ...chartValues
         });
     }
   }, [chartValues.series]);
@@ -129,7 +153,9 @@ const TotalIncomeLineChart = ({chartValues}) => {
     <>
       <div className="d-md-flex align-items-center justify-content-between mb-3">
         <div>
-          <h5 className="card-title">Total Income</h5>
+          <h5 className="card-title">
+         Monthly Total Income
+    </h5>
         </div>
       </div>
       <div style={{ height: "305px" }} className="me-n2 rounded-bars">

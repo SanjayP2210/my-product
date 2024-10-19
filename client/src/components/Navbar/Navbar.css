@@ -592,45 +592,6 @@
 
 .nav-cart-section{
     max-height: 80vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 }
-/* 
-.nav-cart-loader {
-    border-right: 2px solid red;
-    border-radius: 100%;
-    animation: nav-cart-loader 800ms linear infinite;
-    &:before,
-    &:after {
-        content: '';
-        width: 2.8em;
-        height: 2.8em;
-        display: block;
-        position: absolute;
-        top: calc(50%);
-        left: calc(50%);
-        border-left: .08em solid red;
-        border-radius: 100%;
-        animation: nav-cart-loader 400ms linear infinite reverse;
-    }
-
-    &:after {
-        width: 2.8em;
-            height: 2.8em;
-        top: calc(50%);
-        left: calc(50%);
-        border: 0;
-        border-right: .05em solid red;
-        animation: none;
-    }
-}
-
-@keyframes nav-cart-loader {
-    from {
-        transform: rotate(360deg);
-    }
-
-    to {
-        transform: rotate(0deg);
-    }
-} */
