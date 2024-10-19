@@ -547,7 +547,7 @@ const Navbar = () => {
                   <img src={Logo} style={{ width: "50px" }} className="logo-image" alt="logo-img" />
                 </NavLink>
               </li>
-              <li className="nav-item d-none d-xl-flex align-items-center nav-icon-hover-bg rounded-circle">
+              {/* <li className="nav-item d-none d-xl-flex align-items-center nav-icon-hover-bg rounded-circle">
                 <Link
                   className="nav-link"
                   href="javascript:void(0)"
@@ -556,7 +556,7 @@ const Navbar = () => {
                 >
                   <Icon icon="solar:magnifer-linear" className={"fs-6"}></Icon>
                 </Link>
-              </li>
+              </li> */}
             </ul>
             <div className="d-block d-xl-none">
               <NavLink to="/" className="text-nowrap nav-link">
@@ -988,7 +988,7 @@ const Navbar = () => {
                                 e.preventDefault();
                                 handleAddToCart(product);
                               }}
-                              disabled={product?.quantity === product?.stock}
+                              disabled={product?.quantity >= product?.stock}
                             >
                               +
                             </button>
@@ -1017,7 +1017,7 @@ const Navbar = () => {
                         onClick={(e) => {
                           e.preventDefault();
                           closeSideMenuBtn?.current?.click();
-                          navigate("/");
+                          isAdmin ? navigate("/admin/shop") : navigate("/")
                         }}
                       >
                         Go back to Shopping

@@ -77,7 +77,6 @@ const Dashboard = () => {
   useEffect(() => {
     if (chartData) {
       console.log("chartData", chartData);
-      let totalAmount = 0;
       setLineChartOptions({
         ...lineChartOptions,
         ...chartData

@@ -19,6 +19,11 @@ const CheckoutCard = ({ nextStep }) => {
     totalDiscount,
     totalPrice,
   } = useSelector((state) => state.cart);
+  const {
+    isAdmin,
+    isLoggedIn,
+    loginUserData: user,
+  } = useSelector((state) => state.auth);
 
   const handleAddToCart = (id) => {
     let limitExist = false;
@@ -68,7 +73,7 @@ const CheckoutCard = ({ nextStep }) => {
                 id="go-to-shopping"
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate("/");
+                  isAdmin ? navigate("/admin/shop") : navigate("/")
                 }}
               >
                 Go back to Shopping
