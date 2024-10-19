@@ -20,6 +20,7 @@ import "./Navbar.css";
 import { menuList, optionMenuList } from "./menu-list";
 import 'simplebar'; // or "import SimpleBar from 'simplebar';" if you want to use it manually.
 import 'simplebar/dist/simplebar.css';
+import Loader from "../Loader/Loader";
 
 const Navbar = () => {
   const {
@@ -28,6 +29,7 @@ const Navbar = () => {
     loginUserData: user,
   } = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const {
     cartItems,
     isCartUpdated,
@@ -101,6 +103,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (isCartUpdated || isProductRemoveFromCart) {
+      setIsLoading(false);
       dispatch(getCart());
       // dispatch(resetCartState());
     }
@@ -136,11 +139,13 @@ const Navbar = () => {
       stock: product?.stock,
       updatedPrice: product?.updatedPrice,
     };
+    setIsLoading(true);
     dispatch(addToCart(formData));
   };
 
   return (
     <>
+      <Loader visible={isLoading} />
       <header className="topbar">
         <div className="with-vertical">
           <nav className="navbar navbar-expand-lg p-0">
@@ -944,6 +949,7 @@ const Navbar = () => {
                           className="text-danger fs-4"
                           onClick={(e) => {
                             e.preventDefault();
+                            setIsLoading(true);
                             dispatch(removeFullProductFromCart(product?._id));
                           }}
                         >
@@ -961,8 +967,10 @@ const Navbar = () => {
                             <button
                               type="button"
                               className="btn btn-outline-primary btn-sm"
-                              onClick={() =>
+                              onClick={() =>{
+                                setIsLoading(true);
                                 dispatch(removeFromCart(product?._id))
+                              }
                               }
                             >
                               -

@@ -70,6 +70,7 @@ const Shop = () => {
 
   useEffect(() => {
     if (isCartUpdated) {
+      setIsLoading(false);
       // dispatch(resetCartState());
       addToCartInfoToast();
       // dispatch(getCart());
@@ -101,6 +102,7 @@ const Shop = () => {
       stock: product?.stock,
       updatedPrice: product?.updatedPrice,
     };
+    setIsLoading(true);
     dispatch(addToCart(formData));
   };
 

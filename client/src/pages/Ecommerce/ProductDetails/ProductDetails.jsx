@@ -147,6 +147,7 @@ const ProductDetails = () => {
       stock: product?.stock,
       updatedPrice: product?.updatedPrice,
     };
+    setIsLoading(true);
     dispatch(addToCart(formData));
   };
 
@@ -174,6 +175,7 @@ const ProductDetails = () => {
   const addNewReview = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const formData = new FormData();
       const formKeys = Object.keys(reviewForm);
       formKeys.forEach((key) => {
@@ -181,6 +183,7 @@ const ProductDetails = () => {
         formData.append(key, keyValue);
       });
       const response = await apiService.postRequest("review", formData);
+      setIsLoading(false);
       if (response?.isError) {
         toast.error("Error adding new review", response?.isError);
       } else {
@@ -189,12 +192,13 @@ const ProductDetails = () => {
         fetchReview();
       }
     } catch (error) {
+      setIsLoading(false);
       console.error(error);
-      // toast.error("Error adding new review");
     }
   };
 
   const handleDeleteReview = async (reviewId) => {
+    setIsLoading(true);
     const response = await apiService.deleteRequest(`review/${reviewId}`, {
       productId: productId,
     });
@@ -203,6 +207,7 @@ const ProductDetails = () => {
     } else {
       fetchReview();
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -214,6 +219,7 @@ const ProductDetails = () => {
       }
       // dispatch(resetCartState());
       addToCartInfoToast();
+      setIsLoading(false);
     }
   }, [isCartUpdated]);
 
