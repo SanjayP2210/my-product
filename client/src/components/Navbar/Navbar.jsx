@@ -126,9 +126,11 @@ const Navbar = () => {
         (item) => item.productId.toString() === product._id
       );
       if (isExist?.productId) {
-        limitExist = isExist?.quantity === isExist?.stock;
+        limitExist = isExist?.quantity >= isExist?.stock;
       }
     }
+    console.log('limit exist',limitExist);
+
     if (limitExist) return;
     const formData = {
       productId: product._id,
@@ -988,7 +990,7 @@ const Navbar = () => {
                                 e.preventDefault();
                                 handleAddToCart(product);
                               }}
-                              disabled={product?.quantity >= product?.stock}
+                              disabled={isLoading || (product?.quantity >= product?.stock)}
                             >
                               +
                             </button>
