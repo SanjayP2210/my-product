@@ -8,7 +8,6 @@ const Slick = ({ images }) => {
  const mainSliderRef = useRef(null);
   const thumbnailSliderRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  console.log("activeIndex", activeIndex);
  const mainSliderSettings = {
    dots: false,
    infinite: true,
@@ -26,7 +25,7 @@ const Slick = ({ images }) => {
    speed: 500,
    slidesToShow: images?.length > 3 ? 5 : 3,
    slidesToScroll: 3,
-   arrows: false,
+   arrows: true,
    centerMode: true,
    centerPadding: "40px",
    asNavFor: mainSliderRef.current,
@@ -56,18 +55,66 @@ const Slick = ({ images }) => {
    ],
  };
 
+ const onMouseMove = (e) => {
+  const target = e.currentTarget ;
+  const x = (e.nativeEvent.offsetX / target.offsetWidth) * 100;
+  const y = (e.nativeEvent.offsetY / target.offsetHeight) * 100;
+  target.style.backgroundPosition = x + "% " + y + "%";
+  target.style.cursor = 'zoom-in';
+};
+
+const onMouseEnter = (e) => {
+  const target = e.currentTarget;
+  const zoom = target.getAttribute("data-zoom");
+  const $img = target.querySelector("img");
+  $img.style.pointer = 'zoom-in';
+  if ($img) {
+    ($img.nextSibling).style.display = "block";
+  }
+
+  if (zoom) {
+    const temp = new Image();
+    temp.src = zoom;
+    temp.onload = () => {
+      target.style.backgroundImage = `url(${zoom})`;
+      target.style.pointer = 'zoom-in';
+      if ($img) {
+        $img.style.opacity = "0";
+        ($img.nextSibling).style.display = "none";
+      }
+    };
+  }
+};
+
+const onMouseLeave = (e) => {
+  const target = e.currentTarget;
+  const $img = target.querySelector("img");
+  target.removeAttribute("style");
+  if ($img) {
+    $img.style.opacity = "1";
+    ($img.nextSibling).style.display = "none";
+  }
+};
 
   return (
     <div className="slick-carousel-container">
       <Slider className="owl-product-img" {...mainSliderSettings} ref={mainSliderRef}>
         {images?.map((image, index) => (
           <>
-            <div className="images-div" key={index}>
-              <img
+            <div className="images-div"
+               onMouseMove={onMouseMove}
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+               data-zoom={image?.url} 
+               style={{cursor: 'zoom-in'}}
+               key={index}>
+              <img 
+                style={{cursor: 'zoom-in'}}
                 src={image?.url}
                 alt={`Thumbnail-${index}`}
                 className="img-fluid"
               />
+              <div className="zoom__loading" />
             </div>
           </>
         ))}
